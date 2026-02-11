@@ -1,0 +1,28 @@
+<h2>Featured Products</h2>
+
+<div class="categories">
+  <button 
+    [class.active]="selectedCategory === 'all'"
+    (click)="loadAllProducts()">
+    All
+  </button>
+
+  <button
+    *ngFor="let category of categories"
+    [class.active]="selectedCategory === category"
+    (click)="filterByCategory(category)">
+    {{ category | titlecase }}
+  </button>
+</div>
+
+<p *ngIf="loading">Loading products...</p>
+
+<div class="grid">
+  <div class="card" *ngFor="let product of products">
+    <img [src]="product.image" />
+    <h3>{{ product.title }}</h3>
+    <p>${{ product.price }}</p>
+  </div>
+</div>
+
+
