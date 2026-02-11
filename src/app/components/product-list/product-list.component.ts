@@ -2,11 +2,12 @@ import { Component , OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { FormsModule } from '@angular/forms';
+import { ProductModalComponent } from '../product-modal/product-modal.component';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ProductModalComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })
@@ -18,6 +19,7 @@ export class ProductListComponent {
   loading = false;
   selectedCategory = 'all';
   searchTerm = '';
+   selectedProduct: any = null;
 
   constructor(private productService: ProductService) {}
 
@@ -60,4 +62,14 @@ export class ProductListComponent {
       product.title.toLowerCase().includes(term)
     );
   }
+ 
+
+openModal(product: any) {
+  this.selectedProduct = product;
+}
+
+closeModal() {
+  this.selectedProduct = null;
+}
+
 }

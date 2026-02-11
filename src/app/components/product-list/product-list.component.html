@@ -25,12 +25,20 @@
 
 <p *ngIf="loading">Loading products...</p>
 
+<p *ngIf="!loading && filteredProducts.length === 0" class="empty">
+  No products found
+</p>
+
 <div class="grid">
-  <div class="card" *ngFor="let product of filteredProducts">
+  <div class="card" *ngFor="let product of filteredProducts" (click)="openModal(product)">
     <img [src]="product.image" />
     <h3>{{ product.title }}</h3>
     <p>${{ product.price }}</p>
   </div>
 </div>
 
-
+<app-product-modal
+  *ngIf="selectedProduct"
+  [product]="selectedProduct"
+  (close)="closeModal()">
+</app-product-modal>

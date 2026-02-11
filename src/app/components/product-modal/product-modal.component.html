@@ -1,0 +1,10 @@
+<div class="overlay" (click)="close.emit()">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <img [src]="product.image" />
+    <h2>{{ product.title }}</h2>
+    <p>{{ product.description }}</p>
+    <strong>${{ product.price }}</strong>
+    <button (click)="close.emit()">Close</button>
+  </div>
+</div>
+

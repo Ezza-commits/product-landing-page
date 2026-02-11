@@ -1,25 +1,73 @@
-# Product Landing Page (Angular 18 Standalone)
+# Product Landing Page – Angular 18 (Standalone)
 
-## About
-This is a responsive Product Showcase Landing Page built using **Angular 18 Standalone Components**.  
-It fetches **real-time product data** from [Fake Store API](https://fakestoreapi.com) using Angular's `HttpClient`.
+A modern, responsive product landing page built with **Angular 18 Standalone Components**.  
+The application fetches **real-time data** from a public REST API and focuses on clean UI, UX, and modern Angular best practices.
 
-## Features
-- Responsive layout with CSS grid
-- Hero section with CTA
-- Product cards dynamically loaded from REST API
-- Clean UI with hover animations
-- Standalone components (modern Angular 18 approach)
+---
 
-## Tech Stack
-- Angular 18 (Standalone Components)
+## 🚀 Live Demo
+👉 Add your deployed link here  
+(example: https://product-landing.web.app)
+
+---
+
+## 📦 Features
+
+- Angular 18 Standalone Components
+- Real REST API integration (Fake Store API)
+- Product listing with live data
+- Category-based filtering
+- Real-time product search
+- Product detail modal
+- Dark mode toggle
+- Responsive & modern UI
+- Loading & empty states handling
+
+---
+
+## 🛠 Tech Stack
+
+- **Angular 18**
+- Standalone Architecture (No NgModules)
 - TypeScript
-- REST API integration (`HttpClient` via `provideHttpClient()`)
-- CSS Grid & Flexbox
+- REST API (HttpClient via `provideHttpClient`)
+- CSS / SCSS
+- Firebase / Netlify (for deployment)
 
-## Setup
+---
+
+## 🌐 API Used
+
+- Fake Store API  
+  https://fakestoreapi.com
+
+Endpoints:
+- `/products`
+- `/products/categories`
+- `/products/category/:category`
+
+---
+
+## 📂 Project Structure (Simplified)
+
+src/app/
+├── components/
+│ ├── navbar/
+│ ├── hero/
+│ ├── product-list/
+│ ├── product-modal/
+│ └── footer/
+├── services/
+│ └── product.service.ts
+├── app.component.ts
+└── app.config.ts
+
+---
+
+## ⚙️ Setup Instructions
+
 ```bash
-git clone <repo-link>
+git clone <your-repo-link>
 cd product-landing-page
 npm install
 ng serve
