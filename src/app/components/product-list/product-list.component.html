@@ -1,5 +1,13 @@
 <h2>Featured Products</h2>
 
+<div class="search-box">
+  <input
+    type="text"
+    placeholder="Search products..."
+    [(ngModel)]="searchTerm"
+    (input)="applySearch()" />
+</div>
+
 <div class="categories">
   <button 
     [class.active]="selectedCategory === 'all'"
@@ -18,7 +26,7 @@
 <p *ngIf="loading">Loading products...</p>
 
 <div class="grid">
-  <div class="card" *ngFor="let product of products">
+  <div class="card" *ngFor="let product of filteredProducts">
     <img [src]="product.image" />
     <h3>{{ product.title }}</h3>
     <p>${{ product.price }}</p>

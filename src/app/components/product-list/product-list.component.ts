@@ -1,19 +1,23 @@
 import { Component , OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductService } from '../../services/product.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent {
-  products: any[] = [];
+   products: any[] = [];
+  filteredProducts: any[] = [];
+
   categories: string[] = [];
-  loading = true;
-   selectedCategory = 'all';
+  loading = false;
+  selectedCategory = 'all';
+  searchTerm = '';
 
   constructor(private productService: ProductService) {}
 
@@ -33,6 +37,7 @@ export class ProductListComponent {
     this.selectedCategory = 'all';
     this.productService.getProducts().subscribe(res => {
       this.products = res;
+      this.filteredProducts = res;
       this.loading = false;
     });
   }
@@ -43,7 +48,16 @@ export class ProductListComponent {
 
     this.productService.getProductsByCategory(category).subscribe(res => {
       this.products = res;
+      this.applySearch();
       this.loading = false;
     });
+  }
+
+  applySearch() {
+    const term = this.searchTerm.toLowerCase();
+
+    this.filteredProducts = this.products.filter(product =>
+      product.title.toLowerCase().includes(term)
+    );
   }
 }
